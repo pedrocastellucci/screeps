@@ -1,9 +1,9 @@
 var roleHarvester = require("role.harvester");
 var roleUpgrader = require("role.upgrader");
-var roleUpgrader = require("role.builder");
+var roleBuilder = require("role.builder");
 
 module.exports.loop = function () {
-    // Game.spawns['Spawn1'].room.controller.activateSafeMode();
+    //Game.spawns['Spawn1'].room.controller.activateSafeMode();
     //Game.spawns['Spawn1'].room.createConstructionSite( 23, 22, STRUCTURE_TOWER );
 
     // var tower = Game.getObjectById('9035ca67d2d59ddf9ecffc26');
@@ -37,14 +37,14 @@ module.exports.loop = function () {
     + ' ' + upgraders.length
     + ' ' + builders.length);
 
-    if (harvesters.length < 2) {
-        // var newName = 'Harvester' + Game.time;
-        // console.log('Spawning new harvester: ' + newName);
-        // Game.spawns['Spawn1'].spawnCreep([WORK,CARRY,MOVE], newName, 
-        //     {memory: {role: 'harvester'}});
-        Game.spawns["Spawn1"].spawnCreep([WORK, CARRY, MOVE, MOVE], "Adam",
+    if (harvesters.length < 4) {
+        Game.spawns["Spawn1"].spawnCreep([WORK, CARRY, MOVE, MOVE], "H1",
             { memory: { role: "harvester" } });
-        Game.spawns["Spawn1"].spawnCreep([WORK, CARRY, MOVE, MOVE], "Eve",
+        Game.spawns["Spawn1"].spawnCreep([WORK, CARRY, MOVE, MOVE], "H2",
+            { memory: { role: "harvester" } });
+        Game.spawns["Spawn1"].spawnCreep([WORK, CARRY, MOVE, MOVE], "H3",
+            { memory: { role: "harvester" } });
+        Game.spawns["Spawn1"].spawnCreep([WORK, CARRY, MOVE, MOVE], "H4",
             { memory: { role: "harvester" } });
 
     }
@@ -52,12 +52,14 @@ module.exports.loop = function () {
         Game.spawns["Spawn1"].spawnCreep([WORK, CARRY, MOVE, MOVE], "Upgrader1",
             { memory: { role: "upgrader" } });
     }
-    else if (builders.length < 1) {
+    else if (builders.length < 2) {
         Game.spawns['Spawn1'].spawnCreep([WORK, CARRY, MOVE, MOVE], "Builder1",
             { memory: { role: "builder" } });
+        Game.spawns['Spawn1'].spawnCreep([WORK, CARRY, MOVE, MOVE], "Builder2",
+        { memory: { role: "builder" } });
     }
 
-    
+
     // if(Game.spawns['Spawn1'].spawning) { 
     //     var spawningCreep = Game.creeps[Game.spawns['Spawn1'].spawning.name];
     //     Game.spawns['Spawn1'].room.visual.text(
