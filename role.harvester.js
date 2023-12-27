@@ -21,6 +21,10 @@ var roleHarvester = {
                     creep.moveTo(targets[0], {visualizePathStyle: {stroke: '#ffffff'}});
                 }
             }
+            else{
+                // Move out of the way if there is nothing to do.
+                creep.moveTo(Game.spawns["Spawn1"], {visualizePathStyle: {stroke: '#ffffff'}});
+            }
         }
 	}
 };
